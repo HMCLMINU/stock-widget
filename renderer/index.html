@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Widget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="titlebar">
+        <div class="title">
+          <span class="dot"></span>
+          <span>주식 트래커</span>
+        </div>
+        <div class="win-controls">
+          <button id="pinBtn" class="win-btn" title="항상 위에 고정">📌</button>
+          <button id="minBtn" class="win-btn" title="최소화">—</button>
+          <button id="closeBtn" class="win-btn close" title="닫기">×</button>
+        </div>
+      </header>
+
+      <div class="search-wrap">
+        <input
+          id="searchInput"
+          class="search-input"
+          type="text"
+          placeholder="기업명 또는 티커 검색 (예: 삼성전자, AAPL)"
+          autocomplete="off"
+        />
+        <div id="searchResults" class="search-results hidden"></div>
+      </div>
+
+      <div id="list" class="list"></div>
+
+      <footer class="statusbar">
+        <span id="status">불러오는 중…</span>
+        <span id="updated"></span>
+      </footer>
+    </div>
+
+    <template id="cardTemplate">
+      <div class="card">
+        <div class="logo-box">
+          <img class="logo-img" alt="" />
+          <span class="logo-fallback"></span>
+        </div>
+        <div class="card-main">
+          <div class="card-row1">
+            <span class="name"></span>
+            <button class="remove-btn" title="삭제">×</button>
+          </div>
+          <div class="card-row2">
+            <span class="ticker"></span>
+            <span class="price"></span>
+          </div>
+          <div class="card-row3">
+            <span class="change"></span>
+            <span class="target-wrap">
+              목표가
+              <input class="target-input" type="text" placeholder="—" />
+              <span class="target-gap"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
